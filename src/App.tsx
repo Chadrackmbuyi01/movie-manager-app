@@ -1,14 +1,15 @@
 // File: src/App.tsx
 import React from "react";
 import { Provider } from "react-redux";
-import { store } from "./store/store";
-import MovieList from "./components/MovieList";
-import MovieSearch from "./components/MovieSearch";
-import MovieForm from "./components/MovieForm";
-import Header from "./components/Header";
+import { store } from "./state/store";
+import MovieList from "../src/components/MovieList";
+import MovieSearch from "../src/components/MovieSearch";
+import MovieForm from "../src/components/MovieForm";
+import Header from "./components/layout/Header";
+import { Movie } from "./types/movie";
 
 function App() {
-  const [editingMovie, setEditingMovie] = React.useState(null);
+  const [editingMovie, setEditingMovie] = React.useState<Movie | null>(null);
 
   return (
     <Provider store={store}>
@@ -27,7 +28,7 @@ function App() {
               </div>
             </div>
             <div className="w-full md:w-2/3">
-              <MovieList onEditMovie={setEditingMovie} />
+              <MovieList onEditMovie={setEditingMovie} movies={[]} />
             </div>
           </div>
         </div>
